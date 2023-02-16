@@ -12,8 +12,17 @@ function postOrder(order) {
             "Content-Type": "application/json; charset=utf-8",
         },
     })
-        .then(res => res.json())
-        .then(res => showNotification());
+        .then(async res => {
+            let status = res.status;
+            res = await res.json();
+            let message = status == 200 
+                ? 'Your order was accepted successfully'
+                : res.error;
+            let alertType = status == 200 
+                ? 'alert-success'
+                : 'alert-danger';
+            return showNotification(message, alertType);
+        });
 
 
 }
@@ -53,10 +62,41 @@ function getOrderData() {
 /**
  * Shows a notification when the order is accepted
  */
-function showNotification() {
+ function showNotification(message, alertType) {
     let orderAlert = $("#order-alert");
+    orderAlert.removeClass("alert-success");
+    orderAlert.addClass(alertType);
+    let pElement = orderAlert.find("p");
+    let titleElement = orderAlert.find("h4");
+    let tmp = pElement.text();
+    let titleTmp = titleElement.text();
+    titleElement.text(alertTitle(alertType));
+    if (message) {
+        pElement.text(message);
+    }
     orderAlert.toggle();
-    setTimeout(() => orderAlert.toggle(), 5000);
+    setTimeout(() => {
+        orderAlert.toggle();
+        orderAlert.removeClass(alertType);
+        orderAlert.addClass("alert-success");
+        pElement.text(tmp);
+        titleElement.text(titleTmp);
+    }, 5000);
+}
+
+function alertTitle(alertType){
+    switch (alertType) {
+        case 'alert-success':
+            return 'Success';
+        case 'alert-danger':
+            return 'Error';
+        case 'alert-warning':
+            return 'Warning';
+        case 'alert-info':
+            return 'Info';
+        default:
+            return 'Info';
+    }
 }
 
 
