@@ -19,32 +19,7 @@
 
   <body>
     <!-- HEADER -->
-
-    <header class="header-section container-fluid">
-      <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">
-          <img src="/images/image4.png" width="50" height="50" class="d-inline-block align-top" alt="" />
-          L'ultima Cena
-        </a>
-        <ul class="navbar-nav mr-auto"></ul>
-        <ul class="navbar-nav">
-          <!-- LINKS -->
-
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Build Your Pizza!</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/app/order/orders.html">Orders</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/app/ingredient/ingredients.html">Ingredients</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/app/size/sizes.html">Sizes</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <div id="commom_header_container"></div>
 
     <!-- TABLE -->
 
@@ -110,5 +85,14 @@
     ></script>
 
     <script src="/js/size/size.js"></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <script src="/js/commom/header.js" type="text/babel"></script>
   </body>
 </html>
