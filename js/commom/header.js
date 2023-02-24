@@ -45,6 +45,11 @@ class Header extends React.Component {
                   Beverages
                 </a>
               </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/app/report/reports.html">
+                  Reports
+                </a>
+              </li>
             </ul>
           </nav>
         </header>
