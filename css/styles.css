@@ -21,3 +21,8 @@
 .order {
   display: none;
 }
+
+.text-bg-primary {
+  color: #fff!important;
+  background-color: RGBA(13,110,253,var(--bs-bg-opacity,1))!important;
+}
